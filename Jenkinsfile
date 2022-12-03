@@ -1,20 +1,22 @@
 pipeline {
-  agent { docker { image 'python:3.10.0' } }
-  stages{
-    stages("build"){
-      steps{
-        sh 'pip install django'
-      }
-    }
-    stages("test"){
-      steps{
-        sh 'python manage.py runserver'
-      }
-    }
-    stages("deploy"){
-      steps{
-        echo "DEPLOYING NOW"
-      }
-    }
-  }
+    agent any
+    
+    stages {
+        stage("build") {
+            steps {
+                echo 'buliding the application...'
+                echo 'application built'
+            }
+        }
+        stage("test") {
+            steps {
+                echo 'testing the application...'
+            }
+        }
+        stage("deploy") {
+            steps {
+                echo 'deploying the application...'
+            }
+        }
+    }   
 }
